@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRef } from 'react';
 
 const Login = () => {
     const name = useRef(null);
     const password = useRef(null);
+    const mail = useRef(null);
+    const [signup,setSignUp] = useState(false);
   return (
     <div className='relative'>
         <div>
@@ -20,25 +22,56 @@ const Login = () => {
                     <div className='text-4xl font-semibold text-white mt-14 p-4 flex justify-start w-9/12'>
                         <h1>Sign In</h1>
                     </div>
+                    {
+                        signup && 
+                        <input type='text' 
+                        ref={name}
+                        className='w-9/12 my-2 p-4 bg-[#333] text-base rounded-md' 
+                        placeholder='Enter E-mail or Phone Number'/>
+                    }
+
                     <input type='text' 
-                    ref={name}
+                    ref={mail}
                     className='w-9/12 my-2 p-4 bg-[#333] text-base rounded-md' 
-                    placeholder='Enter E-mail or Phone Number'/>
+                    placeholder='Enter E-mail'/>
 
                     <input type='text' 
                     ref={password}
                     className='w-9/12 my-2 p-4 bg-[#333] text-base rounded-md' 
                     placeholder='Enter Password'/>
 
+                    { !signup? <>
                     <input type='submit' 
                     className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white' 
                     value='Sign In'/>
 
                     <div className='flex mt-20 w-9/12'>
                         <p className='text-[#8f8f8f]'>New to Netfilx?</p>
-                        <p className='text-white'>Sign up now</p>
+                        <p
+                        onClick={()=>{
+                            setSignUp(true);
+                        }}
+                        className='text-white cursor-pointer'>Sign up now</p>
                         <p className='text-[#8f8f8f]'>.</p>
                     </div>
+                    </>
+                    :
+                    <>
+                    <input type='submit' 
+                    className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white' 
+                    value='Log In'/>
+
+                    <div className='flex mt-20 w-9/12'>
+                        <p className='text-[#8f8f8f]'>Already a user?</p>
+                        <p
+                        onClick={()=>{
+                            setSignUp(false);
+                        }}
+                        className='text-white cursor-pointer'>Login now</p>
+                        <p className='text-[#8f8f8f]'>.</p>
+                    </div>
+                    </>
+                    }
                 </form>
             </div>
     </div>
