@@ -1,11 +1,72 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRef } from 'react';
+import checkVlidateData from '../utils/validate';
+import {  createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword  } from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser, removeuser } from '../store/userSlice';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const name = useRef(null);
     const password = useRef(null);
     const mail = useRef(null);
     const [signup,setSignUp] = useState(false);
+    const [err,setErr] = useState(null);
+
+    useEffect(()=>{
+        onAuthStateChanged(auth,(user)=>{
+            if(user){
+                const {uid, email, displayName} = user;
+                dispatch(addUser({uid:uid, email:email, displayName:displayName}));
+                navigate('/browse')
+            }
+            else{
+                dispatch(removeuser);
+            }
+        })
+    },[]);
+
+    const handleClick = ()=>{
+        const res = (checkVlidateData(mail.current.value,password.current.value));
+
+        if(res){
+            setErr(res);
+            return;
+        };
+        if(signup){
+            createUserWithEmailAndPassword(auth, mail.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                navigate('/browse');
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage + errorCode);
+                // ..
+            });
+        }
+        else{
+            signInWithEmailAndPassword(auth, mail.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                navigate('/browse');
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErr(errorCode+' '+errorMessage)
+            });
+        }
+    }
+
   return (
     <div className='relative'>
         <div>
@@ -15,34 +76,38 @@ const Login = () => {
                 <form className='w-[450px] h-[600px] relative top-44 bg-black flex flex-col items-center bg-opacity-65'
                     onSubmit={(e)=>{
                         e.preventDefault();
-                        console.log(name.current.value);
-                        console.log(password.current.value);
+                        handleClick();
                     }}
                 >
                     <div className='text-4xl font-semibold text-white mt-14 p-4 flex justify-start w-9/12'>
-                        <h1>Sign In</h1>
+                        {!signup? <h1>Sign In</h1> : <h1>Sign Up</h1>}
                     </div>
                     {
                         signup && 
                         <input type='text' 
+                        required
                         ref={name}
                         className='w-9/12 my-2 p-4 bg-[#333] text-base rounded-md' 
-                        placeholder='Enter E-mail or Phone Number'/>
+                        placeholder='Enter Name'/>
                     }
 
                     <input type='text' 
+                    required
                     ref={mail}
                     className='w-9/12 my-2 p-4 bg-[#333] text-base rounded-md' 
                     placeholder='Enter E-mail'/>
 
-                    <input type='text' 
+                    <input type='password' 
+                    required
                     ref={password}
                     className='w-9/12 my-2 p-4 bg-[#333] text-base rounded-md' 
                     placeholder='Enter Password'/>
 
+                    {err && <h1 className='text-sm font-semibold text-red-500 w-9/12' >{err}</h1>}
+
                     { !signup? <>
                     <input type='submit' 
-                    className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white' 
+                    className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white hover:cursor-pointer' 
                     value='Sign In'/>
 
                     <div className='flex mt-20 w-9/12'>
@@ -58,7 +123,7 @@ const Login = () => {
                     :
                     <>
                     <input type='submit' 
-                    className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white' 
+                    className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white hover:cursor-pointer' 
                     value='Log In'/>
 
                     <div className='flex mt-20 w-9/12'>

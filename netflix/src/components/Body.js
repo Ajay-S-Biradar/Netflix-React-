@@ -2,6 +2,8 @@ import React from 'react'
 import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom"
 import Login from './Login'
 import Header from './Header'
+import Browse from './Browse'
+import Tvshows from './Tvshows'
 
 const AppLayout = ()=>{
   return(
@@ -20,6 +22,14 @@ const appRouter = createBrowserRouter([
           {
             path:'/',
             element:<Login />
+          },
+          {
+            path:'/browse',
+            element:<Browse />
+          },
+          {
+            path:'tvshows',
+            element:<Tvshows />
           }
         ]
     }
