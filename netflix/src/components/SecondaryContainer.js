@@ -6,7 +6,7 @@ const SecondaryContainer = () => {
     const movieList = useSelector(store=>store.movies);
   return (
     <div className='-mt-32 flex flex-col bg-black'>
-        <div className='flex overflow-x-scroll'>
+        <div className='flex overflow-x-scroll scrollbar-thin scrollbar-thumb-rounded-lg'>
             <Movies movies={movieList.nowPlayingMovies} />
         </div>
         <div className=' flex overflow-x-scroll'>
