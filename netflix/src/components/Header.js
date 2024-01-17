@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut  } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { gptClicked } from '../store/gptSlice';
 
 const Header = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [userinfo,setUserInfo] = useState();
+    const gptsearch = useSelector(store=>store.gptsearch.search);
     useEffect(()=>{
         const subscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -20,7 +24,7 @@ const Header = () => {
           });
 
           return()=> subscribe();
-    },[userinfo])
+    })
 
     const handleSignOut = ()=>{
         signOut(auth).then(() => {
@@ -40,11 +44,19 @@ const Header = () => {
         </div>
         {
             userinfo && 
-            <div className='flex text-xl text-white font-medium'
-             onClick={()=>{
-                handleSignOut();
-            }}>
-                logout
+            <div className='p-1 m-1 gap-6 flex'>
+              <div className='flex text-lg p-2 text-black font-medium cursor-pointer  bg-red-600 rounded-lg'
+              onClick={()=>{
+                  dispatch(gptClicked());
+              }}>
+                  {gptsearch?"HOME":"GPT Search"}
+              </div>
+              <div className='flex text-lg p-2 text-white font-medium cursor-pointer bg-red-600 rounded-lg'
+              onClick={()=>{
+                  handleSignOut();
+              }}>
+                  logout
+              </div>
             </div>
         }
     </div>

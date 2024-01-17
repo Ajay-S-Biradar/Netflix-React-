@@ -5,15 +5,18 @@ import { useSelector } from 'react-redux'
 const SecondaryContainer = () => {
     const movieList = useSelector(store=>store.movies);
   return (
-    <div className='-mt-32 flex flex-col bg-black'>
-        <div className='flex overflow-x-scroll scrollbar-thin scrollbar-thumb-rounded-lg'>
+    <div className='-mt-24 flex flex-col bg-black'>
+        <div><h1 className='text-2xl text-white font-semibold'>Now Playing</h1></div>
+        <div className='flex'>
             <Movies movies={movieList.nowPlayingMovies} />
         </div>
-        <div className=' flex overflow-x-scroll'>
-            <Movies movies={movieList.nowPlayingMovies} />
+        <div><h1 className='text-2xl text-white font-semibold'>Popular Movies</h1></div>
+        <div className='flex'>
+            <Movies movies={movieList.popularMovies} />
         </div>
-        <div className=' flex overflow-x-scroll'>
-            <Movies movies={movieList.nowPlayingMovies} />
+        <div><h1 className='text-2xl text-white font-semibold'>Up coming</h1></div>
+        <div className=' flex'>
+            <Movies movies={movieList.upcomingMovies} />
         </div>
     </div>
   )

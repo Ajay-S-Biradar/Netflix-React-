@@ -9,3 +9,5 @@ export const API_OPTIONS = {
 export const API = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
 
 export const IMG_URL = 'https://image.tmdb.org/t/p/w200'
+
+export const GEMINI_API_KEY  = 'AIzaSyBmhfh6KvZXfPOXPBTp5A0DsotDyfLu1F4';
