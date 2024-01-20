@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import MainVideo from './MainVideo'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import VideoInfo from './VideoInfo';
+import { gptClicked } from '../store/gptSlice';
 
 const MainContainer = () => {
     const movieInfo = useSelector((store) => store.movies?.nowPlayingMovies);
