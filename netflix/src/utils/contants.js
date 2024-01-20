@@ -11,3 +11,5 @@ export const API = 'https://api.themoviedb.org/3/movie/now_playing?language=en-U
 export const IMG_URL = 'https://image.tmdb.org/t/p/w200'
 
 export const GEMINI_API_KEY  = 'AIzaSyBmhfh6KvZXfPOXPBTp5A0DsotDyfLu1F4';
+
+export const LANGUAGE_OPTIONS = ["English","Hindi","Kannada"];

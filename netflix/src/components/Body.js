@@ -4,6 +4,7 @@ import Login from './Login'
 import Header from './Header'
 import Browse from './Browse'
 import Tvshows from './Tvshows'
+import MovieInfo from './MovieInfo'
 
 const AppLayout = ()=>{
   return(
@@ -30,6 +31,10 @@ const appRouter = createBrowserRouter([
           {
             path:'tvshows',
             element:<Tvshows />
+          },
+          {
+            path:'movie/:id',
+            element:<MovieInfo />
           }
         ]
     }

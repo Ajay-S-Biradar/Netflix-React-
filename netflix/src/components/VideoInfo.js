@@ -1,7 +1,7 @@
 import React from 'react'
 
 const VideoInfo = ({info}) => {
-    console.log(info);
+
   return (
     <div className='absolute w-full h-full flex justify-start items-center bg-transparent text-white bg-gradient-to-r from-black to-transparent' >
         <div className='w-1/4 m-20'>

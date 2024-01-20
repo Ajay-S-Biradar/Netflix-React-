@@ -4,15 +4,29 @@ const GptSlice = createSlice({
     name:"gpt",
     initialState:{
         search:false,
-        lang:"en"
+        lang:"English",
+        suggestedMovies:null,
+        suggestedMoviesInfo:null
     },
     reducers:{
         gptClicked:(state,action)=>{
             state.search = !state.search;
+        },
+        changeLang:(state,action)=>{
+            state.lang = action.payload;
+        },
+        addSuggestedMovies:(state,action)=>{
+            state.suggestedMovies = action.payload;
+        },
+        removeSuggestedMovies:(state,action)=>{
+            state.suggestedMovies = null;
+        },
+        addSuggestedMoviesInfo:(state,action)=>{
+            state.suggestedMoviesInfo = action.payload;
         }
     }
 });
 
-export const {gptClicked} = GptSlice.actions;
+export const {gptClicked,changeLang,addSuggestedMovies,removeSuggestedMovies,addSuggestedMoviesInfo} = GptSlice.actions;
 
 export default GptSlice.reducer;
