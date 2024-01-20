@@ -10,7 +10,7 @@ const GptSlice = createSlice({
     },
     reducers:{
         gptClicked:(state,action)=>{
-            state.search = !state.search;
+            state.search = action.payload;
         },
         changeLang:(state,action)=>{
             state.lang = action.payload;
