@@ -6,8 +6,8 @@ const MainVideo = ({movieId}) => {
     useGetVideo({setTrailer,movieId});
 
   return (
-    <div className='w-full h-full' >
-        <iframe className='w-full h-full  rounded-2xl'
+    <div className='w-full mt-14 md:mt-0 aspect-video md:h-full' >
+        <iframe className='w-full h-full '
         src={trailer} 
         allow="accelerometer; autoplay;mute; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         allowfullscreen></iframe>

@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import MainVideo from './MainVideo'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import VideoInfo from './VideoInfo';
-import { gptClicked } from '../store/gptSlice';
 
 const MainContainer = () => {
     const movieInfo = useSelector((store) => store.movies?.nowPlayingMovies);
@@ -10,7 +9,7 @@ const MainContainer = () => {
 
     const {id} = movieInfo[0]; 
   return (
-    <div className='w-full h-screen' >
+    <div className='w-full h-auto md:h-screen' >
         <VideoInfo info={movieInfo[0]} />
         <MainVideo movieId={id} />
     </div>

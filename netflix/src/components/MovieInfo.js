@@ -17,9 +17,9 @@ const MovieInfo = () => {
         console.log(json);
     }
   return (
-    <div className='absolute w-full h-full bg-black bg-opacity-20'>
-        <div className='flex mt-40 mx-12 gap-6'>
-            <div className='w-1/2 aspect-video'>
+    <div className='absolute w-full h-auto min-h-full bg-black bg-opacity-20'>
+        <div className='flex mt-10 md:mt-40 mx-2 md:mx-12 gap-6 md:flex-row flex-col'>
+            <div className='w-full md:w-1/2 aspect-video'>
                 <MainVideo movieId={id} />
             </div>
             <div className='gap-4 flex flex-col text-xl'>
@@ -43,7 +43,8 @@ const MovieInfo = () => {
                 </h1>
             </div>
         </div>
-        <div className='mx-14 my-4 text-xl'>
+        <div className='mx-2 md:mx-14 my-4 text-xl'>
+            <h1 className='flex text-2xl font-medium' >Overview:-</h1>
             {moviedata?.overview}
         </div>
     </div>

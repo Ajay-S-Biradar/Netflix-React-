@@ -8,7 +8,7 @@ const GptMovieSuggestion = () => {
 
     console.log(suggestedMoviesInfo);
   return (
-    <div className='mt-80 mx-20 flex flex-col bg-black bg-opacity-60 px-[2rem]' >
+    <div className='mt-80 mx-2 md:mx-20 flex flex-col bg-black bg-opacity-60 px-[2rem]' >
         {
             suggestedMoviesInfo.map((movies)=>{
                 return <Movies movies={movies} />

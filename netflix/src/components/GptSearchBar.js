@@ -11,7 +11,7 @@ const GptSearchBar = () => {
     // const [suggestedMovies,setSuggestedMovies] = useState();
     const gptLang = useSelector(store=>store.gptsearch.lang);
     const handleSearch = async (x)=>{
-        const res = await run(x+' provide only the names in English seperate the names by comma only, not more than 5 names and no extra info is required');
+        const res = await run(x+' provide only the movie names in English seperate the names by comma only, not more than 5 names and no extra info is required');
         const suggestedMovies = ((res.split(',').map(movie=>movie.trim())));
             //will give me an array of promises 
         const promiseArray = suggestedMovies.map(movie=>apiCall(movie)); 
@@ -32,7 +32,7 @@ const GptSearchBar = () => {
 
     </div>
     <div className='absolute flex flex-col items-center justify-center w-full top-[10rem]' >
-        <form className='w-1/2 grid grid-cols-12 m-2' 
+        <form className='w-full md:w-1/2 grid grid-cols-12 m-2' 
             onSubmit={(e)=>{
                 e.preventDefault();
                 handleSearch(search);
@@ -44,7 +44,7 @@ const GptSearchBar = () => {
                     setSearch(e.target.value);
                 }}
             />
-            <input type='submit' className='bg-red-600 py-2 px-4 m-2 rounded-lg col-span-3' value={options[gptLang]?.search} />
+            <input type='submit' className='bg-red-600 py-2 px-0 md:px-4 m-2 rounded-lg col-span-3' value={options[gptLang]?.search} />
         </form>
     </div>
     </>

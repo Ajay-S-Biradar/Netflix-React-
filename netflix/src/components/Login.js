@@ -70,10 +70,10 @@ const Login = () => {
   return (
     <div className='relative'>
         <div>
-            <img className='w-full absolute' src="https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/d3c4e455-f0bf-4003-b7cd-511dda6da82a/IN-en-20240108-popsignuptwoweeks-perspective_alpha_website_large.jpg" />
+            <img className='h-screen object-cover md:h-auto md:w-full md:object-cover absolute' src="https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/d3c4e455-f0bf-4003-b7cd-511dda6da82a/IN-en-20240108-popsignuptwoweeks-perspective_alpha_website_large.jpg" />
         </div>
             <div className='w-full h-full flex justify-center items-center'>
-                <form className='w-[450px] h-[600px] relative top-44 bg-black flex flex-col items-center bg-opacity-65'
+                <form className='w-[450px] h-auto md:h-[600px] relative top-44 bg-black flex flex-col items-center bg-opacity-65'
                     onSubmit={(e)=>{
                         e.preventDefault();
                         handleClick();
@@ -110,7 +110,7 @@ const Login = () => {
                     className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white hover:cursor-pointer' 
                     value='Sign In'/>
 
-                    <div className='flex mt-20 w-9/12'>
+                    <div className='flex my-20 w-9/12'>
                         <p className='text-[#8f8f8f]'>New to Netfilx?</p>
                         <p
                         onClick={()=>{
@@ -126,7 +126,7 @@ const Login = () => {
                     className='w-9/12 mt-6 p-4 bg-red-600 rounded-md text-lg font-semibold text-white hover:cursor-pointer' 
                     value='Log In'/>
 
-                    <div className='flex mt-20 w-9/12'>
+                    <div className='flex my-10 w-9/12'>
                         <p className='text-[#8f8f8f]'>Already a user?</p>
                         <p
                         onClick={()=>{
