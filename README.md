@@ -11,7 +11,7 @@ User-friendly Interface: Enjoy a visually appealing and intuitive interface that
 Gemini Movie Suggestions: Gemini, our powerful recommendation engine, provides personalized movie suggestions, enhancing your viewing experience.
 TMDb Integration: Fetch detailed movie information, including synopsis, cast, ratings, and more, using the TMDb (The Movie Database) API.
 YouTube Integration: Watch trailers directly within the application, thanks to seamless integration with YouTube. Get a sneak peek before deciding what to watch.
-Responsive Design: The Netflix Clone is built with a responsive design, ensuring a seamless experience across devices, from desktops to tablets and smartphones.
+Responsive Design: The Netflix Clone is built with a responsive design, ensuring a seamless experience across devices, from desktops and smartphones (yet to make responsive for the medium devices).
 
 
-The Website is live on site: https://netflix-08.web.app/browse
+The Website is live on site: https://netflix-08.web.app
