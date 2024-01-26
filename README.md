@@ -14,4 +14,4 @@ YouTube Integration: Watch trailers directly within the application, thanks to s
 Responsive Design: The Netflix Clone is built with a responsive design, ensuring a seamless experience across devices, from desktops and smartphones (yet to make responsive for the medium devices).
 
 
-The Website is live on site: https://netflix-08.web.app
+The Website is live on site: https://ajay-netflix.azurewebsites.net
